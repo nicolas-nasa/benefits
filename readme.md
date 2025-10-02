@@ -22,6 +22,8 @@ TODO -
 - [x] Criação do servidor e abistração
 - [x] Criação das rotas
 - [ ] Testes
+- [ ] Implementação ORM
+- [ ] Migrations
 - [ ] Documentação
 - [ ] Model
 - [ ] Metricas
