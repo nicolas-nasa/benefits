@@ -1,5 +1,6 @@
-import { server } from "@providers/servers/index.server";
-import { router } from "routes/index.routes";
+import { server } from "@providers/server.provider";
+import { envs } from "@helpers/index.helpers";
 
-server.init();
-router.routers();
+server.listen(envs.SERVER_PORT, () => {
+  console.log(`Server is running on port ${envs.SERVER_PORT}`);
+});

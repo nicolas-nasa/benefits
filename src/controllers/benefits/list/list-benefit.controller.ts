@@ -1,8 +1,8 @@
 import { ControllerInterface } from "@interfaces/controller.interface";
-import { request, response } from "@providers/router/index.router";
+import { Request, Response } from "@providers/router.provider";
 
-class ListBenefitController implements ControllerInterface<request, response> {
-  async index(req: request, res: response): Promise<response> {
+class ListBenefitController implements ControllerInterface<Request, Response> {
+  async index(req: Request, res: Response): Promise<Response> {
     if (req.params.id) {
       //find one
       return res.send({ message: `Find Benefit ${req.params.id}` });

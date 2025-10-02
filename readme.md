@@ -24,7 +24,7 @@ TODO -
 - [ ] Testes
 - [ ] Implementação ORM
 - [ ] Migrations
-- [ ] Documentação
+- [x] Documentação
 - [ ] Model
 - [ ] Metricas
 - [ ] Deploy

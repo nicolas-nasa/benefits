@@ -11,6 +11,7 @@
     "paths": {
       "@controllers/*": ["controllers/*"],
       "@entities/*": ["entities/*"],
+      "@routes/*": ["routes/*"],
       "@helpers/*": ["helpers/*"],
       "@interfaces/*": ["interfaces/*"],
       "@providers/*": ["providers/*"],

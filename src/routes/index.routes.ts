@@ -1,7 +1,10 @@
-import { server } from "@providers/servers/index.server";
-import { benefitsRouter } from "./benefits.route";
-import { router } from "@providers/router/index.router";
+import { benefitsRoutes } from "./benefits.route";
+import { Router } from "@providers/router.provider";
+import { swaggerRoutes } from "./swagger.routes";
 
-server.route("/benefits", benefitsRouter.routers());
+const routes = Router();
 
-export { router };
+routes.use("/benefits", benefitsRoutes);
+routes.use("/", swaggerRoutes);
+
+export { routes };

@@ -1,5 +1,5 @@
-interface ControllerInterface<Request, Response> {
-  index: (req: Request, res: Response) => Promise<Response>;
+interface ControllerInterface<T, R> {
+  index: (req: T, res: R) => Promise<R>;
 }
 
 export { ControllerInterface };

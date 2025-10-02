@@ -1,16 +1,20 @@
-import {
-  CreateBenefitController,
+import { benefitsControllers } from "@controllers/index.controllers";
+import { Router } from "@providers/router.provider";
+
+const {
+  ListBenefitController,
   ActivateBenefitController,
   DeactivateBenefitController,
-  ListBenefitController,
+  CreateBenefitController,
   DeleteBenefitController,
-} from "@controllers/benefits/index-benefit.controllers";
-import { router } from "@providers/router/index.router";
+} = benefitsControllers;
 
-router.get("/", new ListBenefitController());
-router.put("/:id/activate", new ActivateBenefitController());
-router.put("/:id/deactivate", new DeactivateBenefitController());
-router.post("/", new CreateBenefitController());
-router.delete("/", new DeleteBenefitController());
+const benefitsRoutes = Router();
 
-export { router as benefitsRouter };
+benefitsRoutes.get("/", new ListBenefitController().index);
+benefitsRoutes.put("/:id/activate", new ActivateBenefitController().index);
+benefitsRoutes.put("/:id/deactivate", new DeactivateBenefitController().index);
+benefitsRoutes.post("/", new CreateBenefitController().index);
+benefitsRoutes.delete("/", new DeleteBenefitController().index);
+
+export { benefitsRoutes };
