@@ -1,6 +1,9 @@
 import { benefitsControllers } from "@controllers/index.controllers";
+import { SequelizeRepositoryProvider } from "@providers/repository.provider";
 import { Router } from "@providers/router.provider";
-
+import { Benefit } from "models/benefit.model";
+import { BenefitService } from "services/benefit.service";
+import { bind } from "@helpers/bind.helper";
 const {
   ListBenefitController,
   ActivateBenefitController,
@@ -10,11 +13,19 @@ const {
 } = benefitsControllers;
 
 const benefitsRoutes = Router();
+const repository = new SequelizeRepositoryProvider(Benefit);
+const service = new BenefitService(repository);
 
-benefitsRoutes.get("/", new ListBenefitController().index);
-benefitsRoutes.put("/:id/activate", new ActivateBenefitController().index);
-benefitsRoutes.put("/:id/deactivate", new DeactivateBenefitController().index);
-benefitsRoutes.post("/", new CreateBenefitController().index);
-benefitsRoutes.delete("/", new DeleteBenefitController().index);
+const list = bind(new ListBenefitController(service));
+const activate = bind(new ActivateBenefitController(service));
+const deactivate = bind(new DeactivateBenefitController(service));
+const create = bind(new CreateBenefitController(service));
+const remove = bind(new DeleteBenefitController(service));
+
+benefitsRoutes.get("/", list);
+benefitsRoutes.put("/:id/activate", activate);
+benefitsRoutes.put("/:id/deactivate", deactivate);
+benefitsRoutes.post("/", create);
+benefitsRoutes.delete("/:id", remove);
 
 export { benefitsRoutes };

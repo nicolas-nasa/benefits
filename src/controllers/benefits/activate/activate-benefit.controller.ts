@@ -1,13 +1,23 @@
 import { ControllerInterface } from "@interfaces/controller.interface";
-import { request, response } from "@providers/router/index.router";
+import { Request, Response } from "@providers/router.provider";
+import { BenefitService } from "services/benefit.service";
 
 class ActivateBenefitController
-  implements ControllerInterface<request, response>
+  implements ControllerInterface<Request, Response>
 {
-  async index(req: request, res: response): Promise<response> {
-    if (req.params.id) {
-      //find one
-      return res.send({ message: `Find Benefit ${req.params.id}` });
+  private service: BenefitService;
+
+  constructor(service: BenefitService) {
+    this.service = service;
+  }
+
+  public async index(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    if (id) {
+      await this.service.activate(id);
+      return res.send({
+        message: `Find Benefit `,
+      });
     }
     return res.send({ message: "Find Benefit" });
   }
