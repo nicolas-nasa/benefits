@@ -5,30 +5,33 @@ class Benefit extends Model {}
 Benefit.init(
   {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      unique: true,
     },
     names: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: false,
     },
     description: {
       type: DataTypes.STRING,
       allowNull: true,
+      unique: false,
     },
     isActive: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
       allowNull: false,
+      unique: false,
     },
     createdAt: {
       type: DataTypes.DATE,
-      autoIncrement: true,
+      unique: false,
     },
     softdelete: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   },
   {
