@@ -22,10 +22,10 @@ TODO -
 - [x] Criação do servidor e abistração
 - [x] Criação das rotas
 - [ ] Testes
-- [ ] Implementação ORM
-- [ ] Migrations
+- [x] Implementação ORM
+- [x] Migrations
 - [x] Documentação
-- [ ] Model
+- [x] Model
 - [ ] Metricas
 - [ ] Deploy
 - [x] Container
